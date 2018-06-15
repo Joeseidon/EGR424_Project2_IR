@@ -58,10 +58,16 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+/* User Libraries */
+#include <clockConfig.h>
+
 int main(void)
 {
     /* Stop Watchdog  */
     MAP_WDT_A_holdTimer();
+
+    /* Setup 48MHz External Clock to Source MCLK and SMCLK (12MHz) */
+    clockStartUp();
 
     while(1)
     {
