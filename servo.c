@@ -7,6 +7,8 @@
 
 
 #include <servo.h>
+#include <stdio.h>
+#include <stdint.h>
 
 int servo_setup(void){
     int successful = 1;
@@ -15,7 +17,7 @@ int servo_setup(void){
 }
 
 void PWM_Init(uint16_t period, uint16_t duty1){
-  if(duty1 >= period) return; // bad input
+ /* if(duty1 >= period) return; // bad input
   P2DIR |= 0x10;          // make P2.4 output
   P2SEL0 |= 0x10;
   P2SEL1 &= ~0x10;        // configure P2.4 as Timer A0.1 function
@@ -31,6 +33,8 @@ void PWM_Init(uint16_t period, uint16_t duty1){
 // 2    0     TACLR, no clear
 // 1    0     TAIE, no interrupt
 // 0          TAIFG
+ *
+ */
 }
 //***************************PWM_Duty1*******************************
 // change duty cycle of PWM output on P2.4
@@ -38,6 +42,7 @@ void PWM_Init(uint16_t period, uint16_t duty1){
 // Outputs: none
 // period of P2.4 is period*0.1667us, duty cycle is duty1/period
 void PWM_Duty1(uint16_t duty1){
-  if(duty1 >= TA0CCR0) return; // bad input
+  /*if(duty1 >= TA0CCR0) return; // bad input
   TA0CCR1 = duty1;        // CCR1 duty cycle is duty1/period
+  */
 }

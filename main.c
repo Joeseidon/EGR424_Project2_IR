@@ -60,6 +60,11 @@
 
 /* User Libraries */
 #include <clockConfig.h>
+#include <ADC_driver.h>
+
+int IR_Flag;
+uint16_t raw_adc;
+float distance;
 
 int main(void)
 {
@@ -69,8 +74,26 @@ int main(void)
     /* Setup 48MHz External Clock to Source MCLK and SMCLK (12MHz) */
     clockStartUp();
 
+    /* Initialize ADC */
+    ADC_init();
+
+    /* Setup Systick */
+    SysTick_Init();
+    SysTick_Load(50);
+    SysTick_Start(&IR_Flag);
+
+    /* Enabling the FPU for floating point operation */
+    MAP_FPU_enableModule();
+    MAP_FPU_enableLazyStacking();
+
     while(1)
     {
-        
+        if(IR_Flag){
+            //Retrieve ADC data
+            ADC_read(&raw_adc);
+
+            //Convert to usable form
+            distance = ((raw_adc * 3.3 ) / 16384.0);
+        }
     }
 }
