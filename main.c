@@ -68,6 +68,14 @@ int IR_Flag, ADC_Ready;
 uint16_t raw_adc,duty_cycle=0,period=50;
 float distance;
 
+const int default_pattern_length = 6;
+move default_pattern[default_pattern_length] =
+        {CENTER,
+         LEFT,
+         CENTER,
+         RIGHT,
+         CENTER,
+         STOP};
 
 int main(void)
 {
@@ -89,38 +97,18 @@ int main(void)
     MAP_FPU_enableModule();
     MAP_FPU_enableLazyStacking();
 
-    /* Enable Motor Driver */
-    P3->DIR |= BIT5;
-    P3->OUT |= BIT5;
-
-    /* Set Initial Direction */
-    P3->DIR |= BIT6;
-    P3->OUT |= BIT6;
 
     /* Initialize Servo Driver */
-    //PWM_Init(period,duty_cycle);
+    servo_setup();
 
     //configure timerA for pwm
     //SMCLK=3MHz
     //Period = 3MHz*2/(50Hz*4*8) = 3750 (up-down mode)
-    //left-duty cycle = 188
-    //right-duty cycle = 375
-    //center-duty cycle = 281
+    //left-duty cycle = 188 (1ms)
+    //right-duty cycle = 375 (2ms)
+    //center-duty cycle = 281 (1.5ms)
     PWM_Init((3750-1),0); //initialize at stop
 
-    /*PWM_Duty1(188);
-
-    int i =0;
-    for(i=0; i<10000000; i++);
-
-    PWM_Duty1(280);
-    for(i=0; i<10000000; i++);
-
-    PWM_Duty1(375);
-    for(i=0; i<10000000; i++);
-
-    PWM_Duty1(280);
-    for(i=0; i<10000000; i++);*/
 
     while(1)
     {
@@ -134,9 +122,12 @@ int main(void)
             ADC_Ready = 0;
             //Convert to usable form
             distance = ((raw_adc * 3.3 ) / 16384.0);
+
+            //Convert distance to cm
+
         }
 
-
+        servo_pattern(default_pattern,default_pattern_length);
     }
 
 }
