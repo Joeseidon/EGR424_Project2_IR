@@ -10,14 +10,14 @@
 
 void ADC_init(void)
 {
-    // initializing adc clk = 4MHz
+    // initializing adc clk = 3MHz
     MAP_ADC14_enableModule();
-    MAP_ADC14_initModule(ADC_CLOCKSOURCE_SMCLK, ADC_PREDIVIDER_4,
+    MAP_ADC14_initModule(ADC_CLOCKSOURCE_SMCLK, ADC_PREDIVIDER_1,
                 ADC_DIVIDER_1, 0);
 
-    // configure gpio 5.4 for analog input
+    // configure gpio 5.5 for analog input
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P5,
-                GPIO_PIN4, GPIO_TERTIARY_MODULE_FUNCTION);
+                GPIO_PIN5, GPIO_TERTIARY_MODULE_FUNCTION);
 
     // configure adc mem 0 for voltage
     MAP_ADC14_configureSingleSampleMode(ADC_MEM0,false);

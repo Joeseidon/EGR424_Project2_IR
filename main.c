@@ -108,7 +108,7 @@ int main(void)
     //center-duty cycle = 281
     PWM_Init((3750-1),0); //initialize at stop
 
-    PWM_Duty1(188);
+    /*PWM_Duty1(188);
 
     int i =0;
     for(i=0; i<10000000; i++);
@@ -120,7 +120,7 @@ int main(void)
     for(i=0; i<10000000; i++);
 
     PWM_Duty1(280);
-    for(i=0; i<10000000; i++);
+    for(i=0; i<10000000; i++);*/
 
     while(1)
     {
