@@ -59,12 +59,15 @@
 #include <stdbool.h>
 
 /* User Libraries */
-#include <clockConfig.h>
-#include <ADC_driver.h>
+#include "clockConfig.h"
+#include "ADC_driver.h"
+#include "systick_init.h"
+#include "servo.h"
 
-int IR_Flag;
-uint16_t raw_adc;
+int IR_Flag, ADC_Ready;
+uint16_t raw_adc,duty_cycle=20,period=50;
 float distance;
+
 
 int main(void)
 {
@@ -86,14 +89,32 @@ int main(void)
     MAP_FPU_enableModule();
     MAP_FPU_enableLazyStacking();
 
+    /* Enable Motor Driver */
+    P3->DIR |= BIT5;
+    P3->OUT |= BIT5;
+
+    /* Set Initial Direction */
+    P3->DIR |= BIT6;
+    P3->OUT |= BIT6;
+
+    /* Initialize Servo Driver */
+    //PWM_Init(period,duty_cycle);
+
+
     while(1)
     {
         if(IR_Flag){
-            //Retrieve ADC data
-            ADC_read(&raw_adc);
+            // start next conversion
+            MAP_ADC14_toggleConversionTrigger();
+            IR_Flag = 0;
+        }
 
+        if(ADC_Ready){
+            ADC_Ready = 0;
             //Convert to usable form
             distance = ((raw_adc * 3.3 ) / 16384.0);
         }
+
+        //PWM_Duty1(duty_cycle);
     }
 }

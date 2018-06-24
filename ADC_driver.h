@@ -10,7 +10,8 @@
 
 #include "driverlib.h"
 
-
+extern uint16_t raw_adc;
+extern int ADC_Ready;
 void ADC_init(void);
 void ADC_read(uint16_t *mem0);
 

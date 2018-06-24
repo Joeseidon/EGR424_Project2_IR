@@ -47,8 +47,10 @@ main.obj: C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/timer32
 main.obj: C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/timer_a.h
 main.obj: C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/uart.h
 main.obj: C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/wdt_a.h
-main.obj: C:/Users/joe/Documents/EGR424/CCS_WorkSpace/EGR424_Project2_IR/clockConfig.h
-main.obj: C:/Users/joe/Documents/EGR424/CCS_WorkSpace/EGR424_Project2_IR/ADC_driver.h
+main.obj: ../clockConfig.h
+main.obj: ../ADC_driver.h
+main.obj: ../systick_init.h
+main.obj: ../servo.h
 
 ../main.c: 
 C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/driverlib.h: 
@@ -97,5 +99,7 @@ C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/timer32.h:
 C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/timer_a.h: 
 C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/uart.h: 
 C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/wdt_a.h: 
-C:/Users/joe/Documents/EGR424/CCS_WorkSpace/EGR424_Project2_IR/clockConfig.h: 
-C:/Users/joe/Documents/EGR424/CCS_WorkSpace/EGR424_Project2_IR/ADC_driver.h: 
+../clockConfig.h: 
+../ADC_driver.h: 
+../systick_init.h: 
+../servo.h: 
