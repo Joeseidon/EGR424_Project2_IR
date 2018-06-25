@@ -31,5 +31,9 @@ void SysTick_Start(int *flag_address){
 }
 
 void SysTickISR(void){
+    tick_count++;
     *flag=1;
+}
+void reset_tick_count(void){
+    tick_count = 0;
 }

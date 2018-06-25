@@ -64,7 +64,7 @@
 #include "systick_init.h"
 #include "servo.h"
 
-int IR_Flag, ADC_Ready;
+int IR_Flag, ADC_Ready, tick_count=0;
 uint16_t raw_adc,duty_cycle=0,period=50;
 float distance;
 
@@ -126,7 +126,11 @@ int main(void)
             //Convert distance to cm
 
         }
-
+        if(servo_triggered && tick_count >= 10){
+            rest_tick_count();
+            servo_move(default_pattern[index]);
+            index++;
+        }
         servo_pattern(default_pattern,default_pattern_length);
     }
 
