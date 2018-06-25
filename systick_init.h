@@ -17,6 +17,4 @@ void SysTick_Start(int *flag_address);
 
 void SysTickISR(void);
 
-void reset_tick_count(void);
-
 #endif /* SYSTICK_INIT_H_ */

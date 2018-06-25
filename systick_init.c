@@ -7,8 +7,10 @@
 
 #include "driverlib.h"
 #include "msp.h"
+#include "systick_init.h"
 
 int *flag;
+extern int tick_count;
 
 // ----- Initialize SysTick ------
 void SysTick_Init(void)
@@ -32,8 +34,5 @@ void SysTick_Start(int *flag_address){
 
 void SysTickISR(void){
     tick_count++;
-    *flag=1;
-}
-void reset_tick_count(void){
-    tick_count = 0;
+    //*flag=1;
 }

@@ -64,7 +64,7 @@
 #include "systick_init.h"
 #include "servo.h"
 
-int IR_Flag, ADC_Ready, tick_count=0;
+int IR_Flag=0, ADC_Ready=0, tick_count=0,servo_triggered=0,index=0;
 uint16_t raw_adc,duty_cycle=0,period=50;
 float distance;
 
@@ -112,12 +112,14 @@ int main(void)
 
     while(1)
     {
+        //set this flag to start an ADC conversion
         if(IR_Flag){
             // start next conversion
             MAP_ADC14_toggleConversionTrigger();
             IR_Flag = 0;
         }
 
+        //this flag is set by the ADC once a conversion has been made
         if(ADC_Ready){
             ADC_Ready = 0;
             //Convert to usable form
@@ -126,12 +128,19 @@ int main(void)
             //Convert distance to cm
 
         }
-        if(servo_triggered && tick_count >= 10){
-            rest_tick_count();
+
+        //set this flag to begin a servo movement pattern
+        if(servo_triggered && tick_count >= 15){
             servo_move(default_pattern[index]);
             index++;
+            //rest_tick_count();
+            tick_count=0;//reset tick count
+            if(index==5){
+                servo_triggered=0;//reset flag
+                index=0;//reset index for next motion pattern
+            }
         }
-        servo_pattern(default_pattern,default_pattern_length);
+        //servo_pattern(default_pattern,default_pattern_length);
     }
 
 }
