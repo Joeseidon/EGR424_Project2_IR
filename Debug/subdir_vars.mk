@@ -2,8 +2,6 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-SHELL = cmd.exe
-
 # Add inputs and outputs from these tool invocations to the build variables 
 CMD_SRCS += \
 ../driverlib_empty_project_ccs.cmd 
@@ -21,16 +19,6 @@ C_SRCS += \
 ../systick_init.c \
 ../uartConfig.c 
 
-C_DEPS += \
-./ADC_driver.d \
-./clockConfig.d \
-./main.d \
-./servo.d \
-./startup_msp432p401r_ccs.d \
-./system_msp432p401r.d \
-./systick_init.d \
-./uartConfig.d 
-
 OBJS += \
 ./ADC_driver.obj \
 ./clockConfig.obj \
@@ -41,15 +29,15 @@ OBJS += \
 ./systick_init.obj \
 ./uartConfig.obj 
 
-OBJS__QUOTED += \
-"ADC_driver.obj" \
-"clockConfig.obj" \
-"main.obj" \
-"servo.obj" \
-"startup_msp432p401r_ccs.obj" \
-"system_msp432p401r.obj" \
-"systick_init.obj" \
-"uartConfig.obj" 
+C_DEPS += \
+./ADC_driver.d \
+./clockConfig.d \
+./main.d \
+./servo.d \
+./startup_msp432p401r_ccs.d \
+./system_msp432p401r.d \
+./systick_init.d \
+./uartConfig.d 
 
 C_DEPS__QUOTED += \
 "ADC_driver.d" \
@@ -60,6 +48,16 @@ C_DEPS__QUOTED += \
 "system_msp432p401r.d" \
 "systick_init.d" \
 "uartConfig.d" 
+
+OBJS__QUOTED += \
+"ADC_driver.obj" \
+"clockConfig.obj" \
+"main.obj" \
+"servo.obj" \
+"startup_msp432p401r_ccs.obj" \
+"system_msp432p401r.obj" \
+"systick_init.obj" \
+"uartConfig.obj" 
 
 C_SRCS__QUOTED += \
 "../ADC_driver.c" \
