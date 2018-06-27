@@ -44,6 +44,11 @@ void EUSCIA0_IRQHandler(void)
 	if(EUSCI_A0->IV & 0x02)
 	{
 		int value = (int)(EUSCI_A0->RXBUF);
+
+		char buffer[50];
+		sprintf(buffer,"Value: %d\n\r", value);
+		UART_Send_String(buffer);
+
 		if(value == 49)
 		{
 			IR_Flag = 1;
@@ -53,7 +58,24 @@ void EUSCIA0_IRQHandler(void)
 		    servo_triggered = 1;
 		}
 	}
-
+	else
+	{
+		char* string = "Invalid input.\n\r"
+	}
 }
 
+void UART_Send(char c)
+{
+	while((EUSCI_A0->IFG & 0x02) == 0);
+	EUSCI_A0->TXBUF = c;
+}
 
+void UART_Send_String(char *string)
+{
+	int i , len = strlen(string);
+	for(i=0; i<len; i++)
+	{
+		while((EUSCI_A0->IFG & 0x02) == 0);
+		EUSCI_A0->TXBUF = *string++;
+	}
+}
