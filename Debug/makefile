@@ -163,8 +163,13 @@ EGR424_Project2_IR.bin: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
+<<<<<<< HEAD
 	-$(RM) "ADC_driver.d" "clockConfig.d" "main.d" "servo.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "systick_init.d" "uartConfig.d" 
 	-$(RM) "ADC_driver.obj" "clockConfig.obj" "main.obj" "servo.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "systick_init.obj" "uartConfig.obj" 
+=======
+	-$(RM) "ADC_driver.d" "clockConfig.d" "main.d" "servo.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "systick_init.d" 
+	-$(RM) "ADC_driver.obj" "clockConfig.obj" "main.obj" "servo.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "systick_init.obj" 
+>>>>>>> 82f7234fc68b85b0e9d48b28be3aa94ad6808352
 	-@echo 'Finished clean'
 	-@echo ' '
 

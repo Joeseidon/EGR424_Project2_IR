@@ -16,8 +16,12 @@ C_SRCS += \
 ../servo.c \
 ../startup_msp432p401r_ccs.c \
 ../system_msp432p401r.c \
+<<<<<<< HEAD
 ../systick_init.c \
 ../uartConfig.c 
+=======
+../systick_init.c 
+>>>>>>> 82f7234fc68b85b0e9d48b28be3aa94ad6808352
 
 OBJS += \
 ./ADC_driver.obj \
@@ -36,8 +40,12 @@ C_DEPS += \
 ./servo.d \
 ./startup_msp432p401r_ccs.d \
 ./system_msp432p401r.d \
+<<<<<<< HEAD
 ./systick_init.d \
 ./uartConfig.d 
+=======
+./systick_init.d 
+>>>>>>> 82f7234fc68b85b0e9d48b28be3aa94ad6808352
 
 C_DEPS__QUOTED += \
 "ADC_driver.d" \
@@ -58,6 +66,15 @@ OBJS__QUOTED += \
 "system_msp432p401r.obj" \
 "systick_init.obj" \
 "uartConfig.obj" 
+
+OBJS__QUOTED += \
+"ADC_driver.obj" \
+"clockConfig.obj" \
+"main.obj" \
+"servo.obj" \
+"startup_msp432p401r_ccs.obj" \
+"system_msp432p401r.obj" \
+"systick_init.obj" 
 
 C_SRCS__QUOTED += \
 "../ADC_driver.c" \
