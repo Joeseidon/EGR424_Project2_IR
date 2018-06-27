@@ -99,6 +99,12 @@ int main(void)
     MAP_FPU_enableModule();
     MAP_FPU_enableLazyStacking();
 
+    /* Uart Setup */
+    UART0_init();
+
+    /* Enabling Interrupts */
+    MAP_Interrupt_enableInterrupt(INT_EUSCIA0);
+    MAP_Interrupt_enableMaster();
 
     /* Initialize Servo Driver */
     servo_setup();
@@ -160,7 +166,23 @@ void UART0_init(void){
 	MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P1,GPIO_PIN2, GPIO_PRIMARY_MODULE_FUNCTION);
 	MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P1,GPIO_PIN3, GPIO_PRIMARY_MODULE_FUNCTION);
 
-	EUSCI_A0->IE = 0x01;		// Enables receive interrupts
-
 	EUSCI_A0->CTLW0 &= ~BIT0;	// Disables software reset mode
+
+	EUSCI_A0->IE |= BIT1;		// Enables receive interrupts
+}
+
+void EUSCIA0_IRQHandler(void)
+{
+	if(EUSCI_A0->IV & 0x02)
+	{
+		value = (int)(EUSCI_A0->RXBUF);
+		if(value == 1)
+		{
+			IR_Flag = 1;
+		}
+		else if(value == 2)
+		{
+			ADC_Ready = 1;
+		}
+	}
 }
