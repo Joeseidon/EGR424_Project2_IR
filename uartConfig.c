@@ -8,7 +8,7 @@
 #include "uartConfig.h"
 #include "driverlib.h"
 
-extern int IR_Flag, ADC_Ready;
+extern int IR_Flag, ADC_Ready, servo_triggered;
 
 void UART0_init(void)
 {
@@ -44,13 +44,13 @@ void EUSCIA0_IRQHandler(void)
 	if(EUSCI_A0->IV & 0x02)
 	{
 		int value = (int)(EUSCI_A0->RXBUF);
-		if(value == 1)
+		if(value == 49)
 		{
 			IR_Flag = 1;
 		}
-		else if(value == 2)
+		else if(value == 50)
 		{
-			ADC_Ready = 1;
+		    servo_triggered = 1;
 		}
 	}
 
