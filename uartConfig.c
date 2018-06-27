@@ -60,7 +60,8 @@ void EUSCIA0_IRQHandler(void)
 	}
 	else
 	{
-		char* string = "Invalid input.\n\r"
+		char* string = "Invalid input.\n\r";
+		UART_Send_String(string);
 	}
 }
 
