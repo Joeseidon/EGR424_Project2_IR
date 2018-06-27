@@ -125,7 +125,9 @@ int main(void)
     //center-duty cycle = 281 (1.5ms)
     PWM_Init((3750-1),0); //initialize at stop
 
-    char* string = "Please enter a 1 or a 2.\n\r";
+    char* string = "Please enter a 1 to move the servo motor.\n\r";
+    UART_Send_String(string);
+    string = "Please enter a 2 to acquire distance from IR sensor.\n\r";
     UART_Send_String(string);
 
     while(1)

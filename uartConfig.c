@@ -46,7 +46,7 @@ void EUSCIA0_IRQHandler(void)
 		int value = (int)(EUSCI_A0->RXBUF);
 
 		char buffer[50];
-		sprintf(buffer,"Value: %d\n\r", value);
+		sprintf(buffer,"Value: %c\n\r", value);
 		UART_Send_String(buffer);
 
 		if(value == 49)
