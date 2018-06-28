@@ -149,13 +149,14 @@ int main(void)
             //Convert to cm Sourced from https://github.com/guillaume-rico/SharpIR
             //distance = 1.1924 * pow(raw_adc,3) -88.771*pow(raw_adc,2) + 1918*raw_adc + 1702.3;
 
-            if(normalized_adc > 17)
+            /*if(raw_adc > 17)
                 distance = 5461/(raw_adc - 17) - 2;
             else
                 distance = 0;
-
+             */
+            distance = ( (raw_adc - 13003) / (-143.81) );
             char buffer[50];
-            sprintf(buffer,"Distance = %f\n\r", distance);
+            sprintf(buffer,"Distance = %f cm\n\r", distance);
             UART_Send_String(buffer);
 
         }
