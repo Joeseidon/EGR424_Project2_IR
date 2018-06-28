@@ -47,6 +47,12 @@ main.obj: C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/timer32
 main.obj: C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/timer_a.h
 main.obj: C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/uart.h
 main.obj: C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/wdt_a.h
+main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/string.h
+main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/_ti_config.h
+main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/linkage.h
+main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/math.h
+main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/_defs.h
+main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/_limits.h
 main.obj: ../clockConfig.h
 main.obj: ../ADC_driver.h
 main.obj: ../systick_init.h
@@ -100,6 +106,12 @@ C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/timer32.h:
 C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/timer_a.h: 
 C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/uart.h: 
 C:/ti/msp/MSP432Ware_3_50_00_02/driverlib/driverlib/MSP432P4xx/wdt_a.h: 
+C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/string.h: 
+C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/_ti_config.h: 
+C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/linkage.h: 
+C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/math.h: 
+C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/_defs.h: 
+C:/ti/ccsv7/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/_limits.h: 
 ../clockConfig.h: 
 ../ADC_driver.h: 
 ../systick_init.h: 

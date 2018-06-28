@@ -25,7 +25,7 @@ void servo_setup(void){
 
 void PWM_Init(uint16_t period, uint16_t duty){
     if(duty >= period) return;  // bad input
-    TA0CCTL0 = 0x0080;          // CCI0 toggle (P7.3 free for other use)
+    TA0CCTL0 = 0x0080;          // CCI0 toggle
     TA0CCR0 = period;           // Squarewave 4*period*8 is
     TA0CCTL1 = 0x0040;          // CCR1 toggle/reset
     TA0CCR1 = duty;             // CCR1 duty cycle is duty/period

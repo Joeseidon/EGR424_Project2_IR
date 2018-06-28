@@ -19,13 +19,13 @@ void ADC_init(void)
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P5,
                 GPIO_PIN5, GPIO_TERTIARY_MODULE_FUNCTION);
 
-    // configure adc mem 0 for voltage
-    MAP_ADC14_configureSingleSampleMode(ADC_MEM0,false);
-    MAP_ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
-                ADC_INPUT_A0, false);
+    // configure adc mem 0 for 3.3V
+    ADC14->MCTL[0] = ADC14_MCTLN_INCH_0;    // ref+=AVcc, channel = A0
+
     MAP_ADC14_enableSampleTimer(ADC_AUTOMATIC_ITERATION);
 
-    MAP_ADC14_enableInterrupt(ADC_INT0);
+    ADC14->IER0 = ADC14_IER0_IE0;           // Enable ADC14IFG.0
+
     MAP_Interrupt_enableInterrupt(INT_ADC14);
 
     // enable conversion

@@ -34,5 +34,4 @@ void SysTick_Start(int *flag_address){
 
 void SysTickISR(void){
     tick_count++;
-    //*flag=1;
 }

@@ -58,6 +58,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
+#include <math.h>
 
 /* User Libraries */
 #include "clockConfig.h"
@@ -76,7 +77,7 @@ void UART0_init(void);
 
 int IR_Flag=0, ADC_Ready=0, tick_count=0,servo_triggered=0,index=0;
 uint16_t raw_adc,duty_cycle=0,period=50;
-float distance;
+float distance,normalized_adc;
 
 const int default_pattern_length = 6;
 move default_pattern[default_pattern_length] =
@@ -125,9 +126,9 @@ int main(void)
     //center-duty cycle = 281 (1.5ms)
     PWM_Init((3750-1),0); //initialize at stop
 
-    char* string = "Please enter a 1 to move the servo motor.\n\r";
+    char* string = "Please enter a 1 to acquire distance from IR sensor.\n\r";
     UART_Send_String(string);
-    string = "Please enter a 2 to acquire distance from IR sensor.\n\r";
+    string = "Please enter a 2 to move the servo motor.\n\r";
     UART_Send_String(string);
 
     while(1)
@@ -143,12 +144,19 @@ int main(void)
         if(ADC_Ready){
             ADC_Ready = 0;
             //Convert to usable form
-            distance = ((raw_adc * 3.3 ) / 16384.0);
+            normalized_adc = ((raw_adc * 3.3 ) / 16384.0);
+
+            //Convert to cm Sourced from https://github.com/guillaume-rico/SharpIR
+            //distance = 1.1924 * pow(raw_adc,3) -88.771*pow(raw_adc,2) + 1918*raw_adc + 1702.3;
+
+            if(normalized_adc > 17)
+                distance = 5461/(raw_adc - 17) - 2;
+            else
+                distance = 0;
 
             char buffer[50];
             sprintf(buffer,"Distance = %f\n\r", distance);
             UART_Send_String(buffer);
-            //Convert distance to cm
 
         }
 
@@ -156,7 +164,6 @@ int main(void)
         if(servo_triggered && tick_count >= 15){
             servo_move(default_pattern[index]);
             index++;
-            //rest_tick_count();
             tick_count=0;//reset tick count
             if(index==5){
                 servo_triggered=0;//reset flag
