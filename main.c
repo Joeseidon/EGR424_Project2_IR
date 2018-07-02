@@ -154,7 +154,12 @@ int main(void)
             else
                 distance = 0;
              */
-            distance = ( (raw_adc - 13003) / (-143.81) );
+            //distance = ( (raw_adc - 13003) / (-143.81) );
+
+            //distance = ( (raw_adc - 13003) / (-158.4) );
+
+            distance = ((normalized_adc - 2.8103) / -0.0336);
+
             char buffer[50];
             sprintf(buffer,"Distance = %f cm\n\r", distance);
             UART_Send_String(buffer);

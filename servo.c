@@ -40,6 +40,9 @@ void PWM_Init(uint16_t period, uint16_t duty){
     TA0CTL = 0x02f0;            // SMCLK=3MHz, divide by 1, up-down mode
 }
 
+//left-duty cycle = 188 (1ms)
+//right-duty cycle = 375 (2ms)
+//center-duty cycle = 281 (1.5ms)
 void PWM_Duty(uint16_t duty){
   if(duty >= TA0CCR0) return; // bad input
   TA0CCR1 = duty;        // CCR1 duty cycle is duty1/period
